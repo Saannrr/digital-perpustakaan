@@ -18,12 +18,15 @@ class CreateBukuTable extends Migration
             $table->string('judul');
             $table->string('slug');
             $table->string('sampul');
+            $table->string('file_buku');
             $table->string('penulis');
             $table->foreignId('penerbit_id');
             $table->foreignId('kategori_id');
-            $table->foreignId('rak_id');
-            $table->integer('stok');
+            $table->integer('total_pembaca');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

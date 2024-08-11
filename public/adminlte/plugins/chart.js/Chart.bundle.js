@@ -1532,7 +1532,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -2741,8 +2741,8 @@ var TWO_THIRDS_PI = PI * 2 / 3;
  */
 var exports$1 = {
 	/**
-	 * Clears the entire canvas associated to the given `chart`.
-	 * @param {Chart} chart - The chart for which to clear the canvas.
+	 * Clears the entire canvas associated to the given `reports`.
+	 * @param {Chart} chart - The reports for which to clear the canvas.
 	 */
 	clear: function(chart) {
 		chart.ctx.clearRect(0, 0, chart.width, chart.height);
@@ -3401,7 +3401,7 @@ Element.extend = helpers$1.inherits;
 var core_element = Element;
 
 var exports$3 = core_element.extend({
-	chart: null, // the animation associated chart instance
+	chart: null, // the animation associated reports instance
 	currentStep: 0, // the current animation step
 	numSteps: 60, // default number of steps
 	easing: '', // the easing to use for this animation
@@ -3428,7 +3428,7 @@ Object.defineProperty(exports$3.prototype, 'animationObject', {
 });
 
 /**
- * Provided for backward compatibility, use Chart.Animation#chart instead
+ * Provided for backward compatibility, use Chart.Animation#reports instead
  * @prop Chart.Animation#chartInstance
  * @deprecated since version 2.6.0
  * @todo remove at version 3
@@ -3456,10 +3456,10 @@ var core_animations = {
 	request: null,
 
 	/**
-	 * @param {Chart} chart - The chart to animate.
+	 * @param {Chart} chart - The reports to animate.
 	 * @param {Chart.Animation} animation - The animation that we will animate.
 	 * @param {number} duration - The animation duration in ms.
-	 * @param {boolean} lazy - if true, the chart is not marked as animating to enable more responsive interactions
+	 * @param {boolean} lazy - if true, the reports is not marked as animating to enable more responsive interactions
 	 */
 	addAnimation: function(chart, animation, duration, lazy) {
 		var animations = this.animations;
@@ -3534,7 +3534,7 @@ var core_animations = {
 		var animation, chart, numSteps, nextStep;
 		var i = 0;
 
-		// 1 animation per chart, so we are looping charts here
+		// 1 animation per reports, so we are looping charts here
 		while (i < animations.length) {
 			animation = animations[i];
 			chart = animation.chart;
@@ -4897,11 +4897,11 @@ var controller_bar = core_datasetController.extend({
 		meta.bar = true;
 
 		scaleOpts = me._getIndexScale().options;
-		deprecated('bar chart', scaleOpts.barPercentage, 'scales.[x/y]Axes.barPercentage', 'dataset.barPercentage');
-		deprecated('bar chart', scaleOpts.barThickness, 'scales.[x/y]Axes.barThickness', 'dataset.barThickness');
-		deprecated('bar chart', scaleOpts.categoryPercentage, 'scales.[x/y]Axes.categoryPercentage', 'dataset.categoryPercentage');
-		deprecated('bar chart', me._getValueScale().options.minBarLength, 'scales.[x/y]Axes.minBarLength', 'dataset.minBarLength');
-		deprecated('bar chart', scaleOpts.maxBarThickness, 'scales.[x/y]Axes.maxBarThickness', 'dataset.maxBarThickness');
+		deprecated('bar reports', scaleOpts.barPercentage, 'scales.[x/y]Axes.barPercentage', 'dataset.barPercentage');
+		deprecated('bar reports', scaleOpts.barThickness, 'scales.[x/y]Axes.barThickness', 'dataset.barThickness');
+		deprecated('bar reports', scaleOpts.categoryPercentage, 'scales.[x/y]Axes.categoryPercentage', 'dataset.categoryPercentage');
+		deprecated('bar reports', me._getValueScale().options.minBarLength, 'scales.[x/y]Axes.minBarLength', 'dataset.minBarLength');
+		deprecated('bar reports', scaleOpts.maxBarThickness, 'scales.[x/y]Axes.maxBarThickness', 'dataset.maxBarThickness');
 	},
 
 	update: function(reset) {
@@ -5416,13 +5416,13 @@ core_defaults._set('doughnut', {
 		}
 	},
 
-	// The percentage of the chart that we cut out of the middle.
+	// The percentage of the reports that we cut out of the middle.
 	cutoutPercentage: 50,
 
-	// The rotation of the chart, where the first data arc begins.
+	// The rotation of the reports, where the first data arc begins.
 	rotation: -HALF_PI$1,
 
-	// The total circumference of the chart.
+	// The total circumference of the reports.
 	circumference: DOUBLE_PI$1,
 
 	// Need to override these to give a nice default
@@ -5498,7 +5498,7 @@ var controller_doughnut = core_datasetController.extend({
 		var chartWeight = me._getRingWeight(me.index);
 		var maxWidth, maxHeight, i, ilen;
 
-		// If the chart's circumference isn't a full circle, calculate size as a ratio of the width/height of the arc
+		// If the reports's circumference isn't a full circle, calculate size as a ratio of the width/height of the arc
 		if (circumference < DOUBLE_PI$1) {
 			var startAngle = opts.rotation % DOUBLE_PI$1;
 			startAngle += startAngle >= PI$1 ? -DOUBLE_PI$1 : startAngle < -PI$1 ? DOUBLE_PI$1 : 0;
@@ -6164,7 +6164,7 @@ core_defaults._set('polarArea', {
 		}
 	},
 
-	// Boolean - Whether to animate the rotation of the chart
+	// Boolean - Whether to animate the rotation of the reports
 	animation: {
 		animateRotate: true,
 		animateScale: true
@@ -6435,7 +6435,7 @@ core_defaults._set('pie', {
 	cutoutPercentage: 0
 });
 
-// Pie charts are Doughnut chart with different defaults
+// Pie charts are Doughnut reports with different defaults
 var controller_pie = controller_doughnut;
 
 var valueOrDefault$7 = helpers$1.valueOrDefault;
@@ -6709,7 +6709,7 @@ var controllers = {
 /**
  * Helper function to get relative position for an event
  * @param {Event|IEvent} event - The event to get the position for
- * @param {Chart} chart - The chart
+ * @param {Chart} chart - The reports
  * @returns {object} the event position
  */
 function getRelativePosition(e, chart) {
@@ -6724,8 +6724,8 @@ function getRelativePosition(e, chart) {
 }
 
 /**
- * Helper function to traverse all of the visible elements in the chart
- * @param {Chart} chart - the chart
+ * Helper function to traverse all of the visible elements in the reports
+ * @param {Chart} chart - the reports
  * @param {function} handler - the callback to execute for each visible item
  */
 function parseVisibleItems(chart, handler) {
@@ -6762,8 +6762,8 @@ function getIntersectItems(chart, position) {
 }
 
 /**
- * Helper function to get the items nearest to the event position considering all visible items in teh chart
- * @param {Chart} chart - the chart to look at elements from
+ * Helper function to get the items nearest to the event position considering all visible items in teh reports
+ * @param {Chart} chart - the reports to look at elements from
  * @param {object} position - the point to be nearest to
  * @param {boolean} intersect - if true, only consider items that intersect the position
  * @param {function} distanceMetric - function to provide the distance between points
@@ -6875,7 +6875,7 @@ var core_interaction = {
 		 * If the options.intersect mode is false, we find the nearest item and return the items at the same index as that item
 		 * @function Chart.Interaction.modes.index
 		 * @since v2.4.0
-		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Chart} reports - the reports we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @param {IInteractionOptions} options - options to use during interaction
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
@@ -6886,7 +6886,7 @@ var core_interaction = {
 		 * Returns items in the same dataset. If the options.intersect parameter is true, we only return items if we intersect something
 		 * If the options.intersect is false, we find the nearest item and return the items in that dataset
 		 * @function Chart.Interaction.modes.dataset
-		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Chart} chart - the reports we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @param {IInteractionOptions} options - options to use during interaction
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
@@ -6918,7 +6918,7 @@ var core_interaction = {
 		 * Point mode returns all elements that hit test based on the event position
 		 * of the event
 		 * @function Chart.Interaction.modes.intersect
-		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Chart} chart - the reports we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
 		 */
@@ -6930,7 +6930,7 @@ var core_interaction = {
 		/**
 		 * nearest mode returns the element closest to the point
 		 * @function Chart.Interaction.modes.intersect
-		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Chart} chart - the reports we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @param {IInteractionOptions} options - options to use
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
@@ -6945,7 +6945,7 @@ var core_interaction = {
 		/**
 		 * x mode returns the elements that hit-test at the current x coordinate
 		 * @function Chart.Interaction.modes.x
-		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Chart} chart - the reports we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @param {IInteractionOptions} options - options to use
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
@@ -6976,7 +6976,7 @@ var core_interaction = {
 		/**
 		 * y mode returns the elements that hit-test at the current y coordinate
 		 * @function Chart.Interaction.modes.y
-		 * @param {Chart} chart - the chart we are returning items from
+		 * @param {Chart} chart - the reports we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @param {IInteractionOptions} options - options to use
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
@@ -7101,7 +7101,7 @@ function updateDims(chartArea, params, layout) {
 		chartArea.w = newWidth;
 		chartArea.h = newHeight;
 
-		// return true if chart area changed in layout's direction
+		// return true if reports area changed in layout's direction
 		var sizes = layout.horizontal ? [newWidth, chartArea.w] : [newHeight, chartArea.h];
 		return sizes[0] !== sizes[1] && (!isNaN(sizes[0]) || !isNaN(sizes[1]));
 	}
@@ -7209,9 +7209,9 @@ core_defaults._set('global', {
 
 /**
  * @interface ILayoutItem
- * @prop {string} position - The position of the item in the chart layout. Possible values are
+ * @prop {string} position - The position of the item in the reports layout. Possible values are
  * 'left', 'top', 'right', 'bottom', and 'chartArea'
- * @prop {number} weight - The weight used to sort the item. Higher weights are further away from the chart area
+ * @prop {number} weight - The weight used to sort the item. Higher weights are further away from the reports area
  * @prop {boolean} fullWidth - if true, and the item is horizontal, then push vertical boxes down
  * @prop {function} isHorizontal - returns true if the layout item is horizontal (ie. top or bottom)
  * @prop {function} update - Takes two parameters: width and height. Returns size of item
@@ -7224,16 +7224,16 @@ core_defaults._set('global', {
  * @prop {number} bottom - Bottom edge of the item. Set by layout system and cannot be used in update
  */
 
-// The layout service is very self explanatory.  It's responsible for the layout within a chart.
+// The layout service is very self explanatory.  It's responsible for the layout within a reports.
 // Scales, Legends and Plugins all rely on the layout service and can easily register to be placed anywhere they need
 // It is this service's responsibility of carrying out that layout.
 var core_layouts = {
 	defaults: {},
 
 	/**
-	 * Register a box to a chart.
+	 * Register a box to a reports.
 	 * A box is simply a reference to an object that requires layout. eg. Scales, Legend, Title.
-	 * @param {Chart} chart - the chart to use
+	 * @param {Chart} chart - the reports to use
 	 * @param {ILayoutItem} item - the item to add to be layed out
 	 */
 	addBox: function(chart, item) {
@@ -7258,8 +7258,8 @@ var core_layouts = {
 	},
 
 	/**
-	 * Remove a layoutItem from a chart
-	 * @param {Chart} chart - the chart to remove the box from
+	 * Remove a layoutItem from a reports
+	 * @param {Chart} chart - the reports to remove the box from
 	 * @param {ILayoutItem} layoutItem - the item to remove from the layout
 	 */
 	removeBox: function(chart, layoutItem) {
@@ -7271,7 +7271,7 @@ var core_layouts = {
 
 	/**
 	 * Sets (or updates) options on the given `item`.
-	 * @param {Chart} chart - the chart in which the item lives (or will be added to)
+	 * @param {Chart} chart - the reports in which the item lives (or will be added to)
 	 * @param {ILayoutItem} item - the item to configure with the given options
 	 * @param {object} options - the new item options.
 	 */
@@ -7290,9 +7290,9 @@ var core_layouts = {
 	},
 
 	/**
-	 * Fits boxes of the given chart into the given size by having each box measure itself
+	 * Fits boxes of the given reports into the given size by having each box measure itself
 	 * then running a fitting algorithm
-	 * @param {Chart} chart - the chart
+	 * @param {Chart} chart - the reports
 	 * @param {number} width - the width to fit into
 	 * @param {number} height - the height to fit into
 	 */
@@ -7314,7 +7314,7 @@ var core_layouts = {
 		// Our canvas looks like the following.
 		// The areas L1 and L2 are the left axes. R1 is the right axis, T1 is the top axis and
 		// B1 is the bottom axis
-		// There are also 4 quadrant-like locations (left to right instead of clockwise) reserved for chart overlays
+		// There are also 4 quadrant-like locations (left to right instead of clockwise) reserved for reports overlays
 		// These locations are single-box locations only, when trying to register a chartArea location that is already taken,
 		// an error will be thrown.
 		//
@@ -7369,7 +7369,7 @@ var core_layouts = {
 		// Finally place the boxes to correct coordinates
 		placeBoxes(boxes.leftAndTop, chartArea, params);
 
-		// Move to opposite side of chart
+		// Move to opposite side of reports
 		chartArea.x += chartArea.w;
 		chartArea.y += chartArea.h;
 
@@ -7664,9 +7664,9 @@ function addResizeListener(node, listener, chart) {
 			var w = container ? container.clientWidth : 0;
 			listener(createEvent('resize', chart));
 			if (container && container.clientWidth < w && chart.canvas) {
-				// If the container size shrank during chart resize, let's assume
+				// If the container size shrank during reports resize, let's assume
 				// scrollbar appeared. So we resize again with the scrollbar visible -
-				// effectively making chart smaller and the scrollbar hidden again.
+				// effectively making reports smaller and the scrollbar hidden again.
 				// Because we are inside `throttled`, and currently `ticking`, scroll
 				// events are ignored during this whole 2 resize process.
 				// If we assumed wrong and something else happened, we are resizing
@@ -7724,7 +7724,7 @@ function injectCSS(rootNode, css) {
 var platform_dom$2 = {
 	/**
 	 * When `true`, prevents the automatic injection of the stylesheet required to
-	 * correctly detect when the chart is added to the DOM and then resized. This
+	 * correctly detect when the reports is added to the DOM and then resized. This
 	 * switch has been added to allow external stylesheet (`dist/Chart(.min)?.js`)
 	 * to be manually imported to make this library compatible with any CSP.
 	 * See https://github.com/chartjs/Chart.js/issues/5208
@@ -7780,7 +7780,7 @@ var platform_dom$2 = {
 		// https://github.com/chartjs/Chart.js/issues/4102
 		// https://github.com/chartjs/Chart.js/issues/4152
 		if (context && context.canvas === item) {
-			// Load platform resources on first chart creation, to make it possible to
+			// Load platform resources on first reports creation, to make it possible to
 			// import the library before setting platform options.
 			this._ensureLoaded(item);
 			initCanvas(item, config);
@@ -7895,16 +7895,16 @@ var platform = helpers$1.extend({
 	initialize: function() {},
 
 	/**
-	 * Called at chart construction time, returns a context2d instance implementing
+	 * Called at reports construction time, returns a context2d instance implementing
 	 * the [W3C Canvas 2D Context API standard]{@link https://www.w3.org/TR/2dcontext/}.
 	 * @param {*} item - The native item from which to acquire context (platform specific)
-	 * @param {object} options - The chart options
+	 * @param {object} options - The reports options
 	 * @returns {CanvasRenderingContext2D} context2d instance
 	 */
 	acquireContext: function() {},
 
 	/**
-	 * Called at chart destruction time, releases any resources associated to the context
+	 * Called at reports destruction time, releases any resources associated to the context
 	 * previously returned by the acquireContext() method.
 	 * @param {CanvasRenderingContext2D} context - The context2d instance
 	 * @returns {boolean} true if the method succeeded, else false
@@ -7912,8 +7912,8 @@ var platform = helpers$1.extend({
 	releaseContext: function() {},
 
 	/**
-	 * Registers the specified listener on the given chart.
-	 * @param {Chart} chart - Chart from which to listen for event
+	 * Registers the specified listener on the given reports.
+	 * @param {Chart} reports - Chart from which to listen for event
 	 * @param {string} type - The ({@link IEvent}) type to listen for
 	 * @param {function} listener - Receives a notification (an object that implements
 	 * the {@link IEvent} interface) when an event of the specified type occurs.
@@ -7947,7 +7947,7 @@ var core_plugins = {
 	_plugins: [],
 
 	/**
-	 * This identifier is used to invalidate the descriptors cache attached to each chart
+	 * This identifier is used to invalidate the descriptors cache attached to each reports
 	 * when a global plugin is registered or unregistered. In this case, the cache ID is
 	 * incremented and descriptors are regenerated during following API calls.
 	 * @private
@@ -8013,10 +8013,10 @@ var core_plugins = {
 	},
 
 	/**
-	 * Calls enabled plugins for `chart` on the specified hook and with the given args.
+	 * Calls enabled plugins for `reports` on the specified hook and with the given args.
 	 * This method immediately returns as soon as a plugin explicitly returns false. The
 	 * returned value can be used, for instance, to interrupt the current action.
-	 * @param {Chart} chart - The chart instance for which plugins should be called.
+	 * @param {Chart} chart - The reports instance for which plugins should be called.
 	 * @param {string} hook - The name of the plugin method to call (e.g. 'beforeUpdate').
 	 * @param {Array} [args] - Extra arguments to apply to the hook call.
 	 * @returns {boolean} false if any of the plugins return false, else returns true.
@@ -8043,7 +8043,7 @@ var core_plugins = {
 	},
 
 	/**
-	 * Returns descriptors of enabled plugins for the given chart.
+	 * Returns descriptors of enabled plugins for the given reports.
 	 * @returns {object[]} [{ plugin, options }]
 	 * @private
 	 */
@@ -8087,7 +8087,7 @@ var core_plugins = {
 	},
 
 	/**
-	 * Invalidates cache for the given chart: descriptors hold a reference on plugin option,
+	 * Invalidates cache for the given reports: descriptors hold a reference on plugin option,
 	 * but in some cases, this reference can be changed by the user when updating options.
 	 * https://github.com/chartjs/Chart.js/issues/5111#issuecomment-355934167
 	 * @private
@@ -8099,7 +8099,7 @@ var core_plugins = {
 
 var core_scaleService = {
 	// Scale registration object. Extensions can register new scale types (such as log or DB scales) and then
-	// use the new chart options to grab the correct scale
+	// use the new reports options to grab the correct scale
 	constructors: {},
 	// Use a registration function so that we can move to an ES6 map when we no longer need to support
 	// old browsers
@@ -8124,7 +8124,7 @@ var core_scaleService = {
 		}
 	},
 	addScalesToLayout: function(chart) {
-		// Adds each scale to the chart.boxes array to be sized accordingly
+		// Adds each scale to the reports.boxes array to be sized accordingly
 		helpers$1.each(chart.scales, function(scale) {
 			// Set ILayoutItem parameters for backwards compatibility
 			scale.fullWidth = scale.options.fullWidth;
@@ -8336,7 +8336,7 @@ function splitNewlines(str) {
 
 /**
  * Private helper to create a tooltip item model
- * @param element - the chart element (point, arc, bar) to create the tooltip item for
+ * @param element - the reports element (point, arc, bar) to create the tooltip item for
  * @return new tooltip item
  */
 function createTooltipItem(element) {
@@ -8501,7 +8501,7 @@ function determineAlignment(tooltip, size) {
 	}
 
 	var lf, rf; // functions to determine left, right alignment
-	var olf, orf; // functions to determine if left/right alignment causes tooltip to go outside chart
+	var olf, orf; // functions to determine if left/right alignment causes tooltip to go outside reports
 	var yf; // function to get the y alignment if the tooltip goes outside of the left or right edges
 	var midX = (chartArea.left + chartArea.right) / 2;
 	var midY = (chartArea.top + chartArea.bottom) / 2;
@@ -8535,7 +8535,7 @@ function determineAlignment(tooltip, size) {
 	if (lf(model.x)) {
 		xAlign = 'left';
 
-		// Is tooltip too wide and goes over the right side of the chart.?
+		// Is tooltip too wide and goes over the right side of the reports.?
 		if (olf(model.x)) {
 			xAlign = 'center';
 			yAlign = yf(model.y);
@@ -9350,12 +9350,12 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		 * @private
 		 */
 		me.chart = me;
-		me.controller = me; // chart.chart.controller #inception
+		me.controller = me; // reports.reports.controller #inception
 
-		// Add the chart instance to the global namespace
+		// Add the reports instance to the global namespace
 		Chart.instances[me.id] = me;
 
-		// Define alias to the config data: `chart.data === chart.config.data`
+		// Define alias to the config data: `reports.data === reports.config.data`
 		Object.defineProperty(me, 'data', {
 			get: function() {
 				return me.config.data;
@@ -9367,10 +9367,10 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 
 		if (!context || !canvas) {
 			// The given item is not a compatible context2d element, let's return before finalizing
-			// the chart initialization but after setting basic chart / controller properties that
-			// can help to figure out that the chart is not valid (e.g chart.canvas !== null);
+			// the reports initialization but after setting basic reports / controller properties that
+			// can help to figure out that the reports is not valid (e.g reports.canvas !== null);
 			// https://github.com/chartjs/Chart.js/issues/2807
-			console.error("Failed to create chart: can't acquire context from the given item");
+			console.error("Failed to create reports: can't acquire context from the given item");
 			return;
 		}
 
@@ -9392,7 +9392,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		me.bindEvents();
 
 		if (me.options.responsive) {
-			// Initial resize before chart draws (must be silent to preserve initial animations).
+			// Initial resize before reports draws (must be silent to preserve initial animations).
 			me.resize(true);
 		}
 
@@ -9588,7 +9588,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 			} else {
 				var ControllerClass = controllers[meta.type];
 				if (ControllerClass === undefined) {
-					throw new Error('"' + meta.type + '" is not a chart type.');
+					throw new Error('"' + meta.type + '" is not a reports type.');
 				}
 
 				meta.controller = new ControllerClass(me, i);
@@ -9611,7 +9611,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	},
 
 	/**
-	* Resets the chart back to it's state before the initial animation
+	* Resets the reports back to it's state before the initial animation
 	*/
 	reset: function() {
 		this.resetElements();
@@ -9687,7 +9687,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	},
 
 	/**
-	 * Updates the chart layout unless a plugin returns `false` to the `beforeLayout`
+	 * Updates the reports layout unless a plugin returns `false` to the `beforeLayout`
 	 * hook, in which case, plugins will not be called on `afterLayout`.
 	 * @private
 	 */
@@ -10032,7 +10032,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	isDatasetVisible: function(datasetIndex) {
 		var meta = this.getDatasetMeta(datasetIndex);
 
-		// meta.hidden is a per chart dataset hidden flag override with 3 states: if true or false,
+		// meta.hidden is a per reports dataset hidden flag override with 3 states: if true or false,
 		// the dataset.hidden value is ignored, else if null, the dataset hidden state is returned.
 		return typeof meta.hidden === 'boolean' ? !meta.hidden : !this.data.datasets[datasetIndex].hidden;
 	},
@@ -10207,7 +10207,7 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 	 * Handle an event
 	 * @private
 	 * @param {IEvent} event the event to handle
-	 * @return {boolean} true if the chart needs to re-render
+	 * @return {boolean} true if the reports needs to re-render
 	 */
 	handleEvent: function(e) {
 		var me = this;
@@ -10455,7 +10455,7 @@ var core_helpers = function() {
 
 	/**
 	 * Returns the aligned pixel value to avoid anti-aliasing blur
-	 * @param {Chart} chart - The chart instance.
+	 * @param {Chart} chart - The reports instance.
 	 * @param {number} pixel - A pixel value.
 	 * @param {number} width - The width of the element.
 	 * @returns {number} The aligned pixel value.
@@ -10811,7 +10811,7 @@ var core_helpers = function() {
 		chart.ctx.scale(pixelRatio, pixelRatio);
 
 		// If no style has been set on the canvas, the render size is used as display size,
-		// making the chart visually bigger, so let's enforce it to the "correct" values.
+		// making the reports visually bigger, so let's enforce it to the "correct" values.
 		// See https://github.com/chartjs/Chart.js/issues/3575
 		if (!canvas.style.height && !canvas.style.width) {
 			canvas.style.height = height + 'px';
@@ -11484,7 +11484,7 @@ var Scale = core_element.extend({
 	/**
 	 * @param {number} maxWidth - the max width in pixels
 	 * @param {number} maxHeight - the max height in pixels
-	 * @param {object} margins - the space between the edge of the other scales and edge of the chart
+	 * @param {object} margins - the space between the edge of the other scales and edge of the reports
 	 *   This space comes from two sources:
 	 *     - padding - space that's required to show the labels at the edges of the scale
 	 *     - thickness of scales or legends in another orientation
@@ -12037,7 +12037,7 @@ var Scale = core_element.extend({
 	},
 
 	/**
-	 * Returns the pixel for the minimum chart value
+	 * Returns the pixel for the minimum reports value
 	 * The coordinate (0, 0) is at the upper-left corner of the canvas
 	 */
 	getBasePixel: function() {
@@ -12768,8 +12768,8 @@ var scale_linearbase = core_scale.extend({
 		var opts = me.options;
 		var tickOpts = opts.ticks;
 
-		// If we are forcing it to begin at 0, but 0 will already be rendered on the chart,
-		// do nothing since that would make the chart weird. If the user really wants a weird chart
+		// If we are forcing it to begin at 0, but 0 will already be rendered on the reports,
+		// do nothing since that would make the reports weird. If the user really wants a weird reports
 		// axis, they can manually override it
 		if (tickOpts.beginAtZero) {
 			var minSign = helpers$1.sign(me.min);
@@ -13397,7 +13397,7 @@ var resolve$4 = helpers$1.options.resolve;
 var defaultConfig$3 = {
 	display: true,
 
-	// Boolean - Whether to animate scaling the chart from the centre
+	// Boolean - Whether to animate scaling the reports from the centre
 	animate: true,
 	position: 'chartArea',
 
@@ -13509,7 +13509,7 @@ function fitWithPointLabels(scale) {
 	// We average the left and right distances to get the maximum shape radius that can fit in the box
 	// along with labels.
 	//
-	// Once we have that, we can find the centre point for the chart, by taking the x text protrusion
+	// Once we have that, we can find the centre point for the reports, by taking the x text protrusion
 	// on each side, removing that from the size, halving it and adding the left x protrusion width.
 	//
 	// This will mean we have a shape fitted to the canvas, as large as it can be with the labels
@@ -19481,7 +19481,7 @@ function computeLinearBoundary(source) {
 
 	// Backward compatibility: until v3, we still need to support boundary values set on
 	// the model (scaleTop, scaleBottom and scaleZero) because some external plugins and
-	// controllers might still use it (e.g. the Smith chart).
+	// controllers might still use it (e.g. the Smith reports).
 
 	if (fill === 'start') {
 		target = model.scaleBottom === undefined ? scale.bottom : model.scaleBottom;
@@ -19768,7 +19768,7 @@ core_defaults._set('global', {
 			// See controller.isDatasetVisible comment
 			meta.hidden = meta.hidden === null ? !ci.data.datasets[index].hidden : null;
 
-			// We hid a dataset ... rerender the chart
+			// We hid a dataset ... rerender the reports
 			ci.update();
 		},
 
@@ -20334,7 +20334,7 @@ var plugin_legend = {
 	/**
 	 * Backward compatibility: since 2.1.5, the legend is registered as a plugin, making
 	 * Chart.Legend obsolete. To avoid a breaking change, we export the Legend as part of
-	 * the plugin, which one will be re-exposed in the chart.js file.
+	 * the plugin, which one will be re-exposed in the reports.js file.
 	 * https://github.com/chartjs/Chart.js/pull/2640
 	 * @private
 	 */
@@ -20578,7 +20578,7 @@ var plugin_title = {
 	/**
 	 * Backward compatibility: since 2.1.5, the title is registered as a plugin, making
 	 * Chart.Title obsolete. To avoid a breaking change, we export the Title as part of
-	 * the plugin, which one will be re-exposed in the chart.js file.
+	 * the plugin, which one will be re-exposed in the reports.js file.
 	 * https://github.com/chartjs/Chart.js/pull/2640
 	 * @private
 	 */
@@ -20748,7 +20748,7 @@ core_controller.LinearScaleBase = scale_linearbase;
 
 /**
  * Provided for backward compatibility, instead we should create a new Chart
- * by setting the type in the config (`new Chart(id, {type: '{chart-type}'}`).
+ * by setting the type in the config (`new Chart(id, {type: '{reports-type}'}`).
  * @deprecated since version 2.8.0
  * @todo remove at version 3
  */

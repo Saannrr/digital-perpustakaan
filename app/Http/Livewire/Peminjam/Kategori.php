@@ -12,16 +12,16 @@ class Kategori extends Component
 
     public $count;
 
-    public function mount()
-    {
-        if (auth()->user()) {
-            $this->count = DB::table('peminjaman')
-                ->join('detail_peminjaman', 'peminjaman.id', '=', 'detail_peminjaman.peminjaman_id')
-                ->where('peminjam_id', auth()->user()->id)
-                ->where('status', '!=', 3)
-                ->count();
-        }
-    }
+//    public function mount()
+//    {
+//        if (auth()->user()) {
+//            $this->count = DB::table('peminjaman')
+//                ->join('detail_peminjaman', 'peminjaman.id', '=', 'detail_peminjaman.peminjaman_id')
+//                ->where('peminjam_id', auth()->user()->id)
+//                ->where('status', '!=', 3)
+//                ->count();
+//        }
+//    }
 
     public function pilihKategori($id)
     {

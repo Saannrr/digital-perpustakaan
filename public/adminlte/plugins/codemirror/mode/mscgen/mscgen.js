@@ -1,7 +1,7 @@
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
 // Distributed under an MIT license: https://codemirror.net/LICENSE
 
-// mode(s) for the sequence chart dsl's mscgen, xù and msgenny
+// mode(s) for the sequence reports dsl's mscgen, xù and msgenny
 // For more information on mscgen, see the site of the original author:
 // http://www.mcternan.me.uk/mscgen
 //

@@ -31,7 +31,7 @@
             </a>
           </li>
           <li class="nav-header">MASTER</li>
-        
+
           <li class="nav-item">
             <a href="#" class="nav-link @yield('active-data-master')">
               <i class="nav-icon fas fa-copy"></i>
@@ -45,12 +45,6 @@
                 <a href="/kategori" class="nav-link  @yield('active-kategori')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/rak" class="nav-link  @yield('active-rak')">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Rak</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -68,24 +62,18 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="/transaksi" class="nav-link @yield('active-transaksi')">
-              <i class="fas fa-hands"></i>
-              <p>
-                Transaksi
-              </p>
-            </a>
-          </li>
+{{--            Start reports--}}
+            <li class="nav-header">REPORTS</li>
+            <li class="nav-item">
+                <a href="/reports" class="nav-link @yield('active-reports')">
+                    <i class="fas fa-chart-bar"></i>
+                    <p>
+                        Reports
+                    </p>
+                </a>
+            </li>
+{{--            End Report--}}
 
-          <li class="nav-item">
-            <a href="/chart" class="nav-link @yield('active-chart')">
-              <i class="fas fa-chart-bar"></i>
-              <p>
-                Chart
-              </p>
-            </a>
-          </li>
-         
           @role('admin')
               <li class="nav-header">ADMIN</li>
 

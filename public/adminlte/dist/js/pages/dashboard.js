@@ -112,9 +112,9 @@ $(function () {
   })
 
   /* Chart.js Charts */
-  // Sales chart
-  var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d')
-  // $('#revenue-chart').get(0).getContext('2d');
+  // Sales reports
+  var salesChartCanvas = document.getElementById('revenue-reports-canvas').getContext('2d')
+  // $('#revenue-reports').get(0).getContext('2d');
 
   var salesChartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -173,7 +173,7 @@ $(function () {
   })
 
   // Donut Chart
-  var pieChartCanvas = $('#sales-chart-canvas').get(0).getContext('2d')
+  var pieChartCanvas = $('#sales-reports-canvas').get(0).getContext('2d')
   var pieData = {
     labels: [
       'Instore Sales',
@@ -194,7 +194,7 @@ $(function () {
     maintainAspectRatio: false,
     responsive: true
   }
-  // Create pie or douhnut chart
+  // Create pie or douhnut reports
   // You can switch between pie and douhnut using the method below.
   // eslint-disable-next-line no-unused-vars
   var pieChart = new Chart(pieChartCanvas, { // lgtm[js/unused-local-variable]
@@ -203,9 +203,9 @@ $(function () {
     options: pieOptions
   })
 
-  // Sales graph chart
-  var salesGraphChartCanvas = $('#line-chart').get(0).getContext('2d')
-  // $('#revenue-chart').get(0).getContext('2d');
+  // Sales graph reports
+  var salesGraphChartCanvas = $('#line-reports').get(0).getContext('2d')
+  // $('#revenue-reports').get(0).getContext('2d');
 
   var salesGraphChartData = {
     labels: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2', '2012 Q3', '2012 Q4', '2013 Q1', '2013 Q2'],

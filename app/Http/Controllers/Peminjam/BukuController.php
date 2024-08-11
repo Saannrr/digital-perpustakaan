@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Peminjam;
 
 use App\Http\Controllers\Controller;
+use App\Models\Buku;
 use Illuminate\Http\Request;
 
 class BukuController extends Controller

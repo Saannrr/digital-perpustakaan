@@ -19,30 +19,28 @@ class Buku extends Component
     use WithFileUploads;
 
     public $create, $edit, $delete, $show;
-    public $kategori, $rak, $penerbit;
-    public $kategori_id, $rak_id, $penerbit_id, $baris;
-    public $judul, $stok, $penulis, $sampul, $buku_id, $search;
+    public $kategori, $penerbit;
+    public $kategori_id, $penerbit_id;
+    public $judul, $penulis, $sampul, $file_buku, $buku_id, $total_pembaca, $search;
 
     protected $rules = [
         'judul' => 'required',
         'penulis' => 'required',
-        'stok' => 'required|numeric|min:1',
         'sampul' => 'required|image|max:1024',
+        'file_buku' => 'required|mimes:pdf|max:1000024',
         'kategori_id' => 'required|numeric|min:1',
-        'rak_id' => 'required|numeric|min:1',
         'penerbit_id' => 'required|numeric|min:1',
     ];
 
     protected $validationAttributes = [
         'kategori_id' => 'kategori',
-        'rak_id' => 'rak',
         'penerbit_id' => 'penerbit',
     ];
 
-    public function pilihKategori()
-    {
-        $this->rak = Rak::where('kategori_id', $this->kategori_id)->get();
-    }
+//    public function pilihKategori()
+//    {
+//        $this->rak = Rak::where('kategori_id', $this->kategori_id)->get();
+//    }
 
     public function create()
     {
@@ -61,11 +59,11 @@ class Buku extends Component
 
         ModelsBuku::create([
             'sampul' => $this->sampul,
+            'file_buku' => $this->file_buku,
             'judul' => $this->judul,
             'penulis' => $this->penulis,
-            'stok' => $this->stok,
+            'total_pembaca' => $this->total_pembaca,
             'kategori_id' => $this->kategori_id,
-            'rak_id' => $this->rak_id,
             'penerbit_id' => $this->penerbit_id,
             'slug' => Str::slug($this->judul)
         ]);
@@ -81,12 +79,11 @@ class Buku extends Component
         $this->show = true;
         $this->judul = $buku->judul;
         $this->sampul = $buku->sampul;
+        $this->file_buku = $buku->file_buku;
         $this->penulis = $buku->penulis;
-        $this->stok = $buku->stok;
+        $this->total_pembaca = $buku->total_pembaca;
         $this->kategori = $buku->kategori->nama;
         $this->penerbit = $buku->penerbit->nama;
-        $this->rak = $buku->rak->rak;
-        $this->baris = $buku->rak->baris;
     }
 
     public function edit(ModelsBuku $buku)
@@ -97,12 +94,9 @@ class Buku extends Component
         $this->buku_id = $buku->id;
         $this->judul = $buku->judul;
         $this->penulis = $buku->penulis;
-        $this->stok = $buku->stok;
         $this->kategori_id = $buku->kategori_id;
-        $this->rak_id = $buku->rak_id;
         $this->penerbit_id = $buku->penerbit_id;
         $this->kategori = Kategori::all();
-        $this->rak = Rak::where('kategori_id', $buku->kategori_id)->get();
         $this->penerbit = Penerbit::all();
     }
 
@@ -111,9 +105,7 @@ class Buku extends Component
         $validasi = [
             'judul' => 'required',
             'penulis' => 'required',
-            'stok' => 'required|numeric|min:1',
             'kategori_id' => 'required|numeric|min:1',
-            'rak_id' => 'required|numeric|min:1',
             'penerbit_id' => 'required|numeric|min:1',
         ];
 
@@ -121,22 +113,32 @@ class Buku extends Component
             $validasi['sampul'] = 'required|image|max:1024';
         }
 
+        if ($this->file_buku) {
+            $validasi['file_buku'] = 'required|mimes:pdf|max:1000024';
+        }
+
         $this->validate($validasi);
 
         if ($this->sampul) {
             Storage::disk('public')->delete($buku->sampul);
-            $this->sampul = $this->sampul->store('buku', 'public');
+            $this->sampul = $this->sampul->store('buku/cover', 'public');
         } else {
             $this->sampul = $buku->sampul;
         }
 
+        if ($this->file_buku) {
+            Storage::disk('public')->delete($buku->file_buku);
+            $this->file_buku = $this->file_buku->store('buku/file-buku', 'public');
+        } else {
+            $this->file_buku = $buku->file_buku;
+        }
+
         $buku->update([
             'sampul' => $this->sampul,
+            'file_buku' => $this->file_buku,
             'judul' => $this->judul,
             'penulis' => $this->penulis,
-            'stok' => $this->stok,
             'kategori_id' => $this->kategori_id,
-            'rak_id' => $this->rak_id,
             'penerbit_id' => $this->penerbit_id,
             'slug' => Str::slug($this->judul)
         ]);
@@ -174,7 +176,7 @@ class Buku extends Component
         } else {
             $buku = ModelsBuku::latest()->paginate(5);
         }
-        
+
         return view('livewire.petugas.buku', compact('buku'));
     }
 
@@ -187,12 +189,11 @@ class Buku extends Component
         unset($this->buku_id);
         unset($this->judul);
         unset($this->sampul);
-        unset($this->stok);
+        unset($this->file_buku);
+        unset($this->total_pembaca);
         unset($this->penulis);
         unset($this->kategori);
         unset($this->penerbit);
-        unset($this->rak);
-        unset($this->rak_id);
         unset($this->penerbit_id);
         unset($this->kategori_id);
     }

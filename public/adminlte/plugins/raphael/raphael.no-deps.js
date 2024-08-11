@@ -476,8 +476,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Raphael.fn
      [ property (object) ]
      **
-     * You can add your own method to the canvas. For example if you want to draw a pie chart,
-     * you can create your own pie chart function and ship it as a Raphaël plugin. To do this
+     * You can add your own method to the canvas. For example if you want to draw a pie reports,
+     * you can create your own pie reports function and ship it as a Raphaël plugin. To do this
      * you need to extend the `Raphael.fn` object. You should modify the `fn` object before a
      * Raphaël instance is created, otherwise it will take no effect. Please note that the
      * ability for namespaced plugins was removed in Raphael 2.0. It is up to the plugin to

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Petugas;
 
-use App\Models\Peminjaman;
+use App\Models\Buku;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -20,7 +20,7 @@ class ChartScript extends Component
 
     public function ubahBulanTahun()
     {
-        // 
+        // Update the reports when the month or year changes
     }
 
     public function render()
@@ -28,27 +28,27 @@ class ChartScript extends Component
         $bulan = substr($this->bulan_tahun, -2);
         $tahun = substr($this->bulan_tahun, 0, 4);
 
-        $selesai_dipinjam = Peminjaman::select(DB::raw('count(*) as count, tanggal_pengembalian'))
-            ->groupBy('tanggal_pengembalian')
-            ->whereMonth('tanggal_pengembalian', $bulan)
-            ->whereYear('tanggal_pengembalian', $tahun)
-            ->where('status', 3)
+        $reads_per_day = Buku::select(DB::raw('count(*) as count, DATE(read_at) as date'))
+            ->whereMonth('read_at', $bulan)
+            ->whereYear('read_at', $tahun)
+            ->groupBy(DB::raw('DATE(read_at)'))
             ->get();
 
         $hari_per_bulan = Carbon::parse($this->bulan_tahun)->daysInMonth;
 
         $tanggal_pengembalian = [];
         $count = [];
-        for ($i=1; $i <= $hari_per_bulan; $i++) { 
-            for ($j=0; $j < count($selesai_dipinjam); $j++) { 
-                if (substr($selesai_dipinjam[$j]->tanggal_pengembalian, 0, 2) == $i) {
-                    $tanggal_pengembalian[$i] = substr($selesai_dipinjam[$j]->tanggal_pengembalian, 0, 2);
-                    $count[$i] = $selesai_dipinjam[$j]->count;
-                    break;
-                }else {
-                    $tanggal_pengembalian[$i] = $i;
-                    $count[$i] = 0;
-                }
+
+        for ($i = 1; $i <= $hari_per_bulan; $i++) {
+            $date = sprintf('%04d-%02d-%02d', $tahun, $bulan, $i);
+            $found = $reads_per_day->firstWhere('date', $date);
+
+            if ($found) {
+                $tanggal_pengembalian[$i] = $i;
+                $count[$i] = $found->count;
+            } else {
+                $tanggal_pengembalian[$i] = $i;
+                $count[$i] = 0;
             }
         }
 

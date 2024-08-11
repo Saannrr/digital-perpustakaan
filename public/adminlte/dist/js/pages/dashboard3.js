@@ -11,7 +11,7 @@ $(function () {
   var mode = 'index'
   var intersect = true
 
-  var $salesChart = $('#sales-chart')
+  var $salesChart = $('#sales-reports')
   // eslint-disable-next-line no-unused-vars
   var salesChart = new Chart($salesChart, {
     type: 'bar',
@@ -77,7 +77,7 @@ $(function () {
     }
   })
 
-  var $visitorsChart = $('#visitors-chart')
+  var $visitorsChart = $('#visitors-reports')
   // eslint-disable-next-line no-unused-vars
   var visitorsChart = new Chart($visitorsChart, {
     data: {

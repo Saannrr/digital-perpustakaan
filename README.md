@@ -1,21 +1,19 @@
-<h1 align="center">Laravel 8 Perpustakaan</h1>
+<h1 align="center">Perpustakaan Digital</h1>
 
 ## Author
 
-Laravel 8 pepustakaan dibuat oleh :
+Laravel 8 Pepustakaan Digital dibuat oleh :
 
-- Github : <a href="https://github.com/musyahya"> Musyahya </a>
-- Youtube : <a href="https://www.youtube.com/channel/UC1iCvpMssrHnUsWKEe2cOag"> Musyahya </a>
+- Github : <a href="https://github.com/saannrr"> Ihsan Ramadhan </a>
 
 ## Fitur 
 
-- Autentikasi Admin, Petugas dan Peminjam
-- CRUD Kategori
-- CRUD Buku
-- CRUD Penerbit
-- CRUD Rak
-- Melakukan peminjaman buku
-- Menampilkan chart
+- Autentikasi Admin, Petugas dan Pembaca
+- CRUD Kategori (Admin and Petugas only)
+- CRUD Buku (Admin and Petugas only)
+- CRUD Penerbit (Admin and Petugas only)
+- Pembacaan buku dalam bentuk PDF
+- Melakukan export data buku ke dalam bentuk PDF (Admin and Petugas only)
 - Mengimplementasikan livewire
 - Menggunakan admin LTE
 - Menggunakan fakerphp
@@ -33,9 +31,9 @@ Laravel 8 pepustakaan dibuat oleh :
 - email: petugas@gmail.com
 - Password: 123123123
 
-**Peminjam**
+**Pembaca**
 
-- email: peminjam@gmail.com
+- email: pembaca@gmail.com
 - Password: 123123123
 
 ## Install
@@ -43,7 +41,7 @@ Laravel 8 pepustakaan dibuat oleh :
 **Clone Repository**
 
 ```bash
-git clone https://github.com/musyahya/laravel8_perpustakaan.git
+git clone https://github.com/Saannrr/digital-perpustakaan.git
 ```
 
 **Download zip**
@@ -73,14 +71,14 @@ copy .env.example menjadi .env
 ## Buat database di localhost 
 
 ```bash
-nama database : perpustakaan_laravel_8
+nama database : perpustakaan_digital
 ```
 
 ## Setting database di .env
 
 ```bash
 DB_PORT=3306
-DB_DATABASE=perpustakaan_laravel_8
+DB_DATABASE=perpustakaan_digital
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -106,7 +104,7 @@ php artisan storage:link
 ## Download Asset Buku
 
 ```bash
-https://drive.google.com/drive/folders/1bCEhRhFVnTiRG9YhibUz2lLwFC6SIFNW?usp=sharing
+https://drive.google.com/drive/folders/1eiVdlkA-_7-sPRxMuBzeO3yV8hc29GuY?usp=sharing
 ```
 
 ## Buat Folder buku di public dan copy asetnya
@@ -118,11 +116,6 @@ https://drive.google.com/drive/folders/1bCEhRhFVnTiRG9YhibUz2lLwFC6SIFNW?usp=sha
 php artisan serve
 ```
 
-## Contributing
-
-Contributions, issues and feature requests di persilahkan.
-Jangan ragu untuk memeriksa halaman masalah jika Anda ingin berkontribusi. **Berhubung Project ini saya sudah selesaikan sendiri, namun banyak fitur yang kalian dapat tambahkan silahkan berkontribusi yaa!**
-
 ## License
 
-- Copyright © 2021 Musyahya.
+- Copyright © 2024 Ihsan.

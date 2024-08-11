@@ -29,22 +29,22 @@ class UserSeeder extends Seeder
         ])->assignRole('petugas');
 
         User::create([
-            'name' => 'peminjam',
-            'email' => 'peminjam@gmail.com',
+            'name' => 'pembaca',
+            'email' => 'pembaca@gmail.com',
             'password' => bcrypt('123123123'),
             'email_verified_at' => now()
         ])->assignRole('peminjam');
 
         User::create([
-            'name' => 'musyahya',
-            'email' => 'musyahya@gmail.com',
+            'name' => 'ihsan',
+            'email' => 'ihsan@gmail.com',
             'password' => bcrypt('123123123'),
             'email_verified_at' => now()
         ])->assignRole('peminjam');
 
         User::create([
-            'name' => 'yahya',
-            'email' => 'yahya@gmail.com',
+            'name' => 'joko',
+            'email' => 'joko@gmail.com',
             'password' => bcrypt('123123123'),
             'email_verified_at' => now()
         ])->assignRole('peminjam');

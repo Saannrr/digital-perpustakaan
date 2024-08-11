@@ -16,7 +16,7 @@
                              </div>
                          </div>
                          <div class="col-md-7">
-                             <table class="table text-nowrap">                    
+                             <table class="table text-nowrap">
                                 <tbody>
                                     <tr>
                                         <th>Judul</th>
@@ -39,19 +39,14 @@
                                         <td>{{$kategori}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Rak</th>
+                                        <th>File Buku</th>
                                         <td>:</td>
-                                        <td>{{$rak == 0 ? 'none' : $rak}}</td>
+                                        <td>{{$file_buku}}</td>
                                     </tr>
                                     <tr>
-                                        <th>Baris</th>
+                                        <th>Total Pembaca</th>
                                         <td>:</td>
-                                        <td>{{$baris == 0 ? 'none' : $baris}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Stok</th>
-                                        <td>:</td>
-                                        <td>{{$stok}}</td>
+                                        <td>{{$total_pembaca}}</td>
                                     </tr>
                                 </tbody>
                             </table>

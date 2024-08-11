@@ -10,7 +10,35 @@ class Buku extends Model
     use HasFactory;
 
     protected $table = 'buku';
-    protected $fillable = ['judul', 'stok', 'sampul', 'slug', 'penulis', 'kategori_id', 'rak_id', 'penerbit_id'];
+    protected $fillable = ['judul', 'total_pembaca', 'sampul', 'file_buku', 'slug', 'penulis', 'kategori_id', 'penerbit_id', 'user_id'];
+
+    public static function getYearsData()
+    {
+        return self::selectRaw('YEAR(created_at) as year')
+            ->groupBy('year')
+            ->orderBy('year')
+            ->get()
+            ->pluck('year')
+            ->toArray();
+    }
+
+    public static function getBooksByMonth($month, $year)
+    {
+        return self::whereYear('created_at', $year)
+            ->whereMonth('created_at', $month)
+            ->get();
+    }
+
+    public static function getBooksByYear($year)
+    {
+        return self::whereYear('created_at', $year)
+            ->get();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function kategori()
     {
@@ -37,7 +65,7 @@ class Buku extends Model
     {
         $this->attributes['judul'] = ucfirst($value);
     }
-   
+
     public function setPenulisAttribute($value)
     {
         $this->attributes['penulis'] = ucfirst($value);

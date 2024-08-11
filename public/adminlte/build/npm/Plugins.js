@@ -36,8 +36,8 @@ const Plugins = [
   },
   // Chart.js
   {
-    from: 'node_modules/chart.js/dist/',
-    to: 'plugins/chart.js'
+    from: 'node_modules/reports.js/dist/',
+    to: 'plugins/reports.js'
   },
   // jQuery UI
   {

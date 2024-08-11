@@ -15,7 +15,7 @@ class KategoriSeeder extends Seeder
      */
     public function run()
     {
-        $kategori = ['none', 'novel', 'sejarah', 'religi', 'biografi', 'komik'];
+        $kategori = ['none', 'novel', 'pengembangan diri', 'komputer', 'komik', 'business management'];
 
         foreach ($kategori as $value) {
             Kategori::create([
@@ -23,6 +23,6 @@ class KategoriSeeder extends Seeder
                 'slug' => Str::slug($value)
             ]);
         }
-       
+
     }
 }

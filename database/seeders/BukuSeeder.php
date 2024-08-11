@@ -16,80 +16,87 @@ class BukuSeeder extends Seeder
     public function run()
     {
         Buku::create([
-            'judul' => 'bintang',
-            'slug' => Str::slug('bintang'),
-            'sampul' => 'buku/Sampul_novel_Bintang.jpeg',
-            'penulis' => 'tere liye',
-            'penerbit_id' => 2,
-            'kategori_id' => 2,
-            'rak_id' => 2,
-            'stok' => 10
-        ]);
-
-        Buku::create([
-            'judul' => 'matahari',
-            'slug' => Str::slug('matahari'),
-            'sampul' => 'buku/Sampul_novel_Matahari.jpeg',
-            'penulis' => 'tere liye',
-            'penerbit_id' => 3,
-            'kategori_id' => 2,
-            'rak_id' => 3,
-            'stok' => 10
-        ]);
-
-        Buku::create([
-            'judul' => 'tentang kamu',
-            'slug' => Str::slug('tentang-kamu'),
-            'sampul' => 'buku/Tentang_Kamu_sampul.jpeg',
-            'penulis' => 'tere liye',
-            'penerbit_id' => 2,
-            'kategori_id' => 2,
-            'rak_id' => 4,
-            'stok' => 10
-        ]);
-
-        Buku::create([
-            'judul' => 'gusdur',
-            'slug' => Str::slug('gusdur'),
-            'sampul' => 'buku/gusdur.jpg',
-            'penulis' => 'greg borton',
+            'judul' => 'atomic habits',
+            'slug' => Str::slug('atomic-habits'),
+            'sampul' => 'buku/cover/Atomic habits_cover.jpg',
+            'file_buku' => 'buku/file-buku/Atomic habits_file.pdf',
+            'penulis' => 'james clear',
             'penerbit_id' => 2,
             'kategori_id' => 3,
-            'rak_id' => 7,
-            'stok' => 10
+            'total_pembaca' => 10,
+            'user_id' => 1
         ]);
 
         Buku::create([
-            'judul' => 'habibie',
-            'slug' => Str::slug('habibie'),
-            'sampul' => 'buku/habibie.jpg',
-            'penulis' => 'raden toto sugiharto',
+            'judul' => 'attack on titan volume 1',
+            'slug' => Str::slug('attack-on-titan-volume-1'),
+            'sampul' => 'buku/cover/Attack on Titan - Volume 1_cover.jpg',
+            'file_buku' => 'buku/file-buku/Attack on Titan - Volume 1_file.pdf',
+            'penulis' => 'hajime isayama',
+            'penerbit_id' => 2,
+            'kategori_id' => 5,
+            'total_pembaca' => 20,
+            'user_id' => 1
+        ]);
+
+        Buku::create([
+            'judul' => 'belajar laravel',
+            'slug' => Str::slug('belajar-laravel'),
+            'sampul' => 'buku/cover/Belajar Laravel_cover.jpg',
+            'file_buku' => 'buku/file-buku/Belajar Laravel_file.pdf',
+            'penulis' => 'eko siswanto',
+            'penerbit_id' => 3,
+            'kategori_id' => 4,
+            'total_pembaca' => 17,
+            'user_id' => 1
+        ]);
+
+        Buku::create([
+            'judul' => 'berani tidak disukai',
+            'slug' => Str::slug('berani-tidak-disukai'),
+            'sampul' => 'buku/cover/Berani Tidak Disukai_cover.jpg',
+            'file_buku' => 'buku/file-buku/Berani Tidak Disukai_file.pdf',
+            'penulis' => 'ichiro kishimi & fumitake koga',
             'penerbit_id' => 2,
             'kategori_id' => 3,
-            'rak_id' => 8,
-            'stok' => 10
+            'total_pembaca' => 11,
+            'user_id' => 1
         ]);
 
         Buku::create([
-            'judul' => 'naruto volume 58',
-            'slug' => Str::slug('naruto-volume-58'),
-            'sampul' => 'buku/naruto-58.jpg',
-            'penulis' => 'masashi kishimoto',
-            'penerbit_id' => 3,
-            'kategori_id' => 6,
-            'rak_id' => 12,
-            'stok' => 10
+            'judul' => 'detective conan volume 1',
+            'slug' => Str::slug('detective-conan-volume-1'),
+            'sampul' => 'buku/cover/Detective Conan 01_cover.jpg',
+            'file_buku' => 'buku/file-buku/Detective Conan 01_file.pdf',
+            'penulis' => 'aoyama gosho',
+            'penerbit_id' => 2,
+            'kategori_id' => 5,
+            'total_pembaca' => 15,
+            'user_id' => 1
         ]);
 
         Buku::create([
-            'judul' => 'naruto volume 71',
-            'slug' => Str::slug('naruto-volume-71'),
-            'sampul' => 'buku/naruto-71.jpg',
-            'penulis' => 'masashi kishimoto',
-            'penerbit_id' => 3,
+            'judul' => 'your name',
+            'slug' => Str::slug('your-name'),
+            'sampul' => 'buku/cover/Kimi no Na wa_cover.jpg',
+            'file_buku' => 'buku/file-buku/Kimi no Na wa_file.pdf',
+            'penulis' => 'makoto shinkai',
+            'penerbit_id' => 2,
+            'kategori_id' => 2,
+            'total_pembaca' => 23,
+            'user_id' => 1
+        ]);
+
+        Buku::create([
+            'judul' => 'rich dad poor dad',
+            'slug' => Str::slug('rich-dad-poor-dad'),
+            'sampul' => 'buku/cover/Rich Dad Poor Dad_cover.jpg',
+            'file_buku' => 'buku/file-buku/Rich Dad Poor Dad_file.pdf',
+            'penulis' => 'robert kiyosaki',
+            'penerbit_id' => 2,
             'kategori_id' => 6,
-            'rak_id' => 13,
-            'stok' => 10
+            'total_pembaca' => 14,
+            'user_id' => 1
         ]);
     }
 }

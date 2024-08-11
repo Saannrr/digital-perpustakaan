@@ -48,6 +48,6 @@
 @include('admin-lte/javascript')
 @yield('script')
 @livewireScripts
-@yield('chart-script')
+@yield('reports-script')
 </body>
 </html>

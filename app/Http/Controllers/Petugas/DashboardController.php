@@ -23,19 +23,16 @@ class DashboardController extends Controller
         // count
         $count_buku = Buku::count();
         $count_user = User::role('peminjam')->count();
-        $count_sedang_dipinjam = Peminjaman::where('status', 2)->count();
-        $count_selesai_dipinjam = Peminjaman::where('status', 3)->count();
+        $count_buku_terbaca = Buku::sum('total_pembaca');
 
         // terbaru
         $buku = Buku::limit(5)->latest()->get();
         $user = User::role('peminjam')->limit(5)->latest()->get();
-        $sedang_dipinjam = Peminjaman::where('status', 2)->limit(5)->latest()->get();
-        $selesai_dipinjam = Peminjaman::where('status', 3)->limit(5)->latest()->get();
+        $buku_terbaca = Buku::orderBy('total_pembaca', 'desc')->limit(5)->get();
 
         return view('petugas/dashboard/index',
             compact(
-                'count_buku', 'count_user', 'count_sedang_dipinjam', 'count_selesai_dipinjam',
-                'buku', 'user', 'sedang_dipinjam', 'selesai_dipinjam'
+                'count_buku', 'count_user', 'buku', 'user', 'count_buku_terbaca', 'buku_terbaca'
             )
         );
     }
