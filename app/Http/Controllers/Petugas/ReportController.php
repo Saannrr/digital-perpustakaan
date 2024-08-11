@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Petugas;
 
 use App\Http\Controllers\Controller;
 use App\Models\Buku;
-use Barryvdh\DomPDF\PDF;
+use PDF; // Use the facade alias
 use Illuminate\Http\Request;
 
 class ReportController extends Controller

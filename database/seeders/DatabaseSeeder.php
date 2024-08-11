@@ -17,11 +17,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             KategoriSeeder::class,
-//            RakSeeder::class,
             PenerbitSeeder::class,
             BukuSeeder::class,
-//            TransaksiSeeder::class,
-//            PeminjamanSeeder::class,
         ]);;
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Petugas;
 use App\Models\Buku as ModelsBuku;
 use App\Models\Kategori;
 use App\Models\Penerbit;
-use App\Models\Rak;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
@@ -15,19 +15,19 @@ use Illuminate\Support\Facades\Storage;
 class Buku extends Component
 {
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
     use WithFileUploads;
+    protected $paginationTheme = 'bootstrap';
 
     public $create, $edit, $delete, $show;
     public $kategori, $penerbit;
-    public $kategori_id, $penerbit_id;
+    public $kategori_id, $penerbit_id, $kategori_nama;
     public $judul, $penulis, $sampul, $file_buku, $buku_id, $total_pembaca, $search;
 
     protected $rules = [
         'judul' => 'required',
         'penulis' => 'required',
         'sampul' => 'required|image|max:1024',
-        'file_buku' => 'required|mimes:pdf|max:1000024',
+        'file_buku' => 'required|file|mimes:pdf|max:10000000000000000000000000000000',
         'kategori_id' => 'required|numeric|min:1',
         'penerbit_id' => 'required|numeric|min:1',
     ];
@@ -37,10 +37,16 @@ class Buku extends Component
         'penerbit_id' => 'penerbit',
     ];
 
-//    public function pilihKategori()
-//    {
-//        $this->rak = Rak::where('kategori_id', $this->kategori_id)->get();
-//    }
+    public function pilihKategori()
+    {
+        // Ambil nama kategori berdasarkan ID
+        $kategori = Kategori::find($this->kategori_id);
+        if ($kategori) {
+            $this->kategori_nama = $kategori->nama;
+        } else {
+            $this->kategori_nama = null; // Atur kembali jika kategori tidak ditemukan
+        }
+    }
 
     public function create()
     {
@@ -55,11 +61,17 @@ class Buku extends Component
     {
         $this->validate();
 
-        $this->sampul = $this->sampul->store('buku', 'public');
+//         Logging untuk debugging
+//        Log::info('Menyimpan file sampul: ' . $this->sampul->getClientOriginalName());
+//        Log::info('Menyimpan file buku: ' . $this->file_buku->getClientOriginalName());
+
+        $sampulPath = $this->sampul->store('buku/cover', 'public');
+
+        $fileBukuPath = $this->file_buku->store('buku/file-buku', 'public');
 
         ModelsBuku::create([
-            'sampul' => $this->sampul,
-            'file_buku' => $this->file_buku,
+            'sampul' => $sampulPath,
+            'file_buku' => $fileBukuPath,
             'judul' => $this->judul,
             'penulis' => $this->penulis,
             'total_pembaca' => $this->total_pembaca,
@@ -114,7 +126,7 @@ class Buku extends Component
         }
 
         if ($this->file_buku) {
-            $validasi['file_buku'] = 'required|mimes:pdf|max:1000024';
+            $validasi['file_buku'] = 'required|file|mimes:pdf|max:10000000000000000000000000000000';
         }
 
         $this->validate($validasi);
@@ -158,6 +170,7 @@ class Buku extends Component
     public function destroy(ModelsBuku $buku)
     {
         Storage::disk('public')->delete($buku->sampul);
+        Storage::disk('public')->delete($buku->file_buku);
         $buku->delete();
 
         session()->flash('sukses', 'Data berhasil dihapus.');

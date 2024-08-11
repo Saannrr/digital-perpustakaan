@@ -29,19 +29,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', DashboardController::class);
 
         Route::get('/kategori', KategoriController::class);
-        Route::get('/rak', RakController::class);
         Route::get('/penerbit', PenerbitController::class);
         Route::get('/buku', BukuController::class);
-        Route::get('/transaksi', TransaksiController::class);
         Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
         Route::get('/reports/filter', [ReportController::class, 'filterReports'])->name('reports.filter');
     });
 
     // role peminjam
     Route::middleware(['role:peminjam'])->group(function () {
-//        Route::get('/keranjang', KeranjangController::class);
-//        Route::get('/buku', \App\Http\Livewire\Peminjam\Buku::class)->name('buku.index');
-        Route::get('/buku/{id}/preview', [BukuController::class, 'previewPdf'])->name('buku.previe w');
+        Route::get('/buku/{id}/preview', [\App\Http\Controllers\Peminjam\BukuController::class, 'previewPdf'])->name('buku.preview');
     });
 
     // role admin

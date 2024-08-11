@@ -22,11 +22,8 @@ class CreateBukuTable extends Migration
             $table->string('penulis');
             $table->foreignId('penerbit_id');
             $table->foreignId('kategori_id');
-            $table->integer('total_pembaca');
-            $table->unsignedBigInteger('user_id');
+            $table->integer('total_pembaca')->nullable(true)->default(0);
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

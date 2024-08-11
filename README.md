@@ -1,11 +1,5 @@
 <h1 align="center">Perpustakaan Digital</h1>
 
-## Author
-
-Laravel 8 Pepustakaan Digital dibuat oleh :
-
-- Github : <a href="https://github.com/saannrr"> Ihsan Ramadhan </a>
-
 ## Fitur 
 
 - Autentikasi Admin, Petugas dan Pembaca
@@ -115,7 +109,3 @@ https://drive.google.com/drive/folders/1eiVdlkA-_7-sPRxMuBzeO3yV8hc29GuY?usp=sha
 ```bash
 php artisan serve
 ```
-
-## License
-
-- Copyright © 2024 Ihsan.
